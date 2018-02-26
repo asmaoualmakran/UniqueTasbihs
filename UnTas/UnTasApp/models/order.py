@@ -11,4 +11,4 @@ class Order(models.Model):
 	discount	= models.ItegerField()
 	delivery_address = models.ForeignKey(Address, on_delete=PROTECT, null=False)
 	billing_address = models.ForeignKey(Address, on_delete=PROTECT, null=False)
-	date = DateField((auto_now_add=True, editable=False)
+	date = models.DateField((auto_now_add=True, editable=False)

@@ -1,4 +1,5 @@
 from django.db import models
+from discount import Discount
 
 class Item(models.Model):
 
@@ -17,10 +18,11 @@ class Item(models.Model):
 		)
 
 	category_id	= models.ForeignKey(ItemCategory, on_delete=models.SET_NULL)
-	code	= models.CharField(max_length=100, default='NO_CODE')
+	discount_id = models.ForeignKey(Discount, on_delete=models.SET_NULL)
+	barcode	= models.CharField(max_length=100, default='NO_CODE')
 	name	= models.CharField(max_length=100, default='NO_NAME')
 	selling_price = models.IntegerField(default=0)
 	buying_price = models.IntegerField(default=0)
-	colors 	= models.CharField(max_length=100, null=True)
+	color 	= models.CharField(max_length=100, null=True)
 	image	= models.ImageField(null=True) #check how it specifically works
 	state	= models.CharField(max_length=100, choices=PRODUCT_STATE_CHOICES, default=PERFECT_STATE)

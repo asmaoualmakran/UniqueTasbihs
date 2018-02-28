@@ -5,7 +5,7 @@ from UnTasApp.models.item import Item as itemModel
 class Item(serializers.ModelSerializer):
 	id = serializers.IntegerField(read_only=True)
 	category_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-	discount_id = models.PrimaryKeyRelatedField(many=False, read_only=True)
+	discount_id = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
 	
 	class Meta:
 		model = itemModel

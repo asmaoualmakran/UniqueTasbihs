@@ -4,4 +4,4 @@ from item import Item
 class ItemCategory(models.Model):
 
 	categoryName = models.CharField(max_length=100, unique=True)
-	items = models.ForeignKey(Item, on_delete=models.CASCADE)
+	item_id = models.ForeignKey(Item, on_delete=models.CASCADE)

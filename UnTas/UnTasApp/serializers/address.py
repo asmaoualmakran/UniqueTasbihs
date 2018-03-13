@@ -1,4 +1,4 @@
-from rest_framewrok import serializers
+from rest_framework import serializers
 from UnTasApp.models.address import Address as addressModel
 
 

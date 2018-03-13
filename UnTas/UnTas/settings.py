@@ -35,12 +35,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'UnTasApp',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'UnTasApp' #because it is a customized Abstract user, listing in the installed apps is needed
+
 ]
 
 MIDDLEWARE = [
@@ -73,6 +77,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'UnTas.wsgi.application'
 
+#Custom user authentication using the django user model
+AUTH_USER_MODEL = 'UnTasApp.UserBase'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

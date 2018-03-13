@@ -1,6 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
-from oder import Order
+from UnTasApp.models.userBase import UserBase
+# from order import Order
 
-class Customer(User):
-	order_id = models.ForeignKey(on_delete=PROTECT,null=True)
+class Customer(UserBase):
+	pass
+	# user = models.OneToOneField(UserBase, related_name='customers')
+	 order_id = models.ForeignKey(on_delete=PROTECT,null=True)
+	 address_id = models.ForeignKey(on_delete=PROTECT)

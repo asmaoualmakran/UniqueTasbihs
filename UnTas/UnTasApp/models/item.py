@@ -1,5 +1,6 @@
 from django.db import models
-from discount import Discount
+from UnTasApp.models.discount import Discount
+#from UnTasApp.models.itemCategory import ItemCategory
 
 class Item(models.Model):
 
@@ -17,8 +18,8 @@ class Item(models.Model):
 		(PRODUCT_LOSS, 'product loss'),
 		)
 
-	category_id	= models.ForeignKey(ItemCategory, on_delete=models.SET_NULL)
-	discount_id = models.ForeignKey(Discount, on_delete=models.SET_NULL)
+#	category_id	= models.ForeignKey(ItemCategory, on_delete=models.SET_NULL, null=True)
+	discount_id = models.ForeignKey(Discount, on_delete=models.SET_NULL, null=True)
 	barcode	= models.CharField(max_length=100, default='NO_CODE')
 	name	= models.CharField(max_length=100, default='NO_NAME')
 	selling_price = models.IntegerField(default=0)

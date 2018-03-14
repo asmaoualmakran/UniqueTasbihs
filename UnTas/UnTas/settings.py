@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # 'UnTasApp' #because it is a customized Abstract user, listing in the installed apps is needed
 
 ]

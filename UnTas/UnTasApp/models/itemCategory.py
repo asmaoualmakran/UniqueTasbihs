@@ -1,5 +1,8 @@
 from django.db import models
-from item import Item
+from django.apps import apps
+from UnTasApp.models.item import Item
+
+#Item = apps.get_model('item','Item')
 
 class ItemCategory(models.Model):
 

@@ -7,4 +7,5 @@ from rest_framework.reverse import reverse
 def api_root(request, format=None):
     return Response({
         'address': reverse('api:address', request=request, format=format),
+        'discount': reverse('api:discount', request=request, format=format),
     })

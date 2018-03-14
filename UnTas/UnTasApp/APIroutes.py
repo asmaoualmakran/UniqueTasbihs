@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
-from UnTasApp.controllers import controller, address, discount, item, itemCategory
+from UnTasApp.controllers import controller, address, discount, item, itemCategory, order
 
 
 urlpatterns = [
@@ -13,5 +13,7 @@ urlpatterns = [
 #ITEM-----------------------------------------------------------------------------------------
 	url(r'^items$', item.itemRequest, name="item"),   
 #CATEGORY-------------------------------------------------------------------------------------
-	url(r'^itemCategory$',itemCategory.itemCategoryRequest, name='category')   
+	url(r'^itemCategory$',itemCategory.itemCategoryRequest, name='category'),   
+#ORDER----------------------------------------------------------------------------------------   
+   url(r'^order$', order.orderRequest, name='order')
    ]

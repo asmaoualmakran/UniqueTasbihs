@@ -10,4 +10,5 @@ def api_root(request, format=None):
         'discount': reverse('api:discount', request=request, format=format),
     	'item': reverse('api:item', request=request, format=format),
  		'category': reverse('api:category', request=request, format=format),
+    	'order': reverse('api:order', request=request, format=format),
     })

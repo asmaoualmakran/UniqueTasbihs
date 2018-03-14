@@ -15,6 +15,7 @@ def itemRequest(request):
 		serializer = itemSerializer(data=request.data)
 		if(serializer.is_valid()):
 			serializer.save()
-			serializer = itemSerializer(serializer.save(), context={'request':request})
+			it = serializer.save()
+			serializer = itemSerializer(it, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

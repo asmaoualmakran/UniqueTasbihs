@@ -12,9 +12,9 @@ def discountRequest(request):
 		serializer = discountSerializer(discounts, many=True, context={'request':request})
 		return Response(serializer.data)
 	elif(request.method == 'POST'):
-		serializer = discountSerializer(data=request.data)
+		serializer = createDiscountSerializer(data=request.data)
 		if(serializer.is_valid()):
-			serializer.save()
-			serializer = discountSerializer(serializer.save(), context={'request':request})
+			discount = serializer.save()
+			serializer = discountSerializer(discount, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

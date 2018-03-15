@@ -14,4 +14,4 @@ class CreateDiscount(serializers.ModelSerializer):
 
 	class Meta:
 		model = discountModel
-		fields = ('percentage')
+		fields = ('percentage',)

@@ -15,12 +15,14 @@ class Item(serializers.HyperlinkedModelSerializer):
 
 class CreateItem(serializers.HyperlinkedModelSerializer):
 	# for the choice field, ChoiceField supported by REST
-	state = serializers.CharField(source='get_state_display')
+#	state = serializers.CharField(source='get_state_display')
+
+	#to enable the choices
+#	def get_state(self,obj):
+#		return obj.get_state_display()
 
 	class Meta:
 		model = itemModel
 		fields = ('category_id','discount_id','barcode','name','selling_price','buying_price','color','image','state')
 
-	#to enable the choices
-	def get_state(self,obj):
-		return obj.get_state_display()
+

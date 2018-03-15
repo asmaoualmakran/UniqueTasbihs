@@ -12,9 +12,9 @@ def itemRequest(request):
 		serializer = itemSerializer(items, many=True, context={'request':request})
 		return Response(serializer.data)
 	elif(request.method == 'POST'):
-		serializer = itemSerializer(data=request.data)
+		serializer = createItemSerializer(data=request.data)
 		if(serializer.is_valid()):
-			serializer.save()
-			serializer = itemSerializer(serializer.save(), context={'request':request})
+			item = serializer.save()
+			serializer = itemSerializer(item, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

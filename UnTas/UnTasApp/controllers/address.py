@@ -13,8 +13,9 @@ def addressRequest(request):
 		serializer = addressSerializer(addresses, many=True, context={'request':request})
 		return Response(serializer.data)
 	elif(request.method == 'POST'):
-		serializer = addressSerializer(data=request.data)
+		serializer = createAddressSerializer(data=request.data)
 		if(serializer.is_valid()):
-			serializer = addressSerializer(serializer.save(), context={'request':request})
+			address = serializer.save()
+			serializer = addressSerializer(address, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

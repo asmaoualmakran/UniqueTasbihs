@@ -8,14 +8,16 @@ class Order(serializers.HyperlinkedModelSerializer):
 	item_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 	delivery_id = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
 	billing_id = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+	discount_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
 	class Meta:
 		model = orderModel
-		fields = ('id','customer_id','item_id','delivery_id','billing_id','TAV','discount','price_total')#,'date')
-		extra_kwargs = {'customer_id':{'view_name': 'api:customer-detail'},'item_id':{'view_name:item-detail'},'delivery_id':{'view_name:delivery-address-detail'},'billing_id':{'view_name:billing-address-detail'}}
+		fields = ('id','customer_id','item_id','delivery_id','billing_id','discount_id','TAV','price_total','date', 'status')
+		extra_kwargs = {'customer_id':{'view_name':'api:customer-detail'},'item_id':{'view_name':'api:item-detail'},'delivery_id':{'view_name':'api:delivery-detail'},'billing_id':{'view_name':'api:billing-detail'},'discount_id':{'view_name':'api:discount-detail'}}
 
 class CreateOrder(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = orderModel
-		fields = ('customer_id','item_id','delivery_id','billing_id','TAV','discount','price_total')#,'date')
+		fields = ('customer_id','item_id','delivery_id','billing_id','discount_id','TAV','price_total','date', 'status')
+		

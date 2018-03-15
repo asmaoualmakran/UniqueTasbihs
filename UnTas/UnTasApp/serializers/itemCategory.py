@@ -8,9 +8,10 @@ class ItemCategory(serializers.ModelSerializer):
 	class Meta:
 		model = itemCategoryModel
 		fields = ('id', 'categoryName')
-#		extra_kwargs = {'item_id':{'view_name':'api:item-detail'}}
 
 
 class CreateItemCategory(serializers.ModelSerializer):
-	model = itemCategoryModel
-	fields = ('categoryName')
+
+	class Meta:
+		model = itemCategoryModel
+		fields = ('categoryName',)

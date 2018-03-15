@@ -12,8 +12,9 @@ def itemCategoryRequest(request):
 		serializer = categorySerializer(categories, many=True, context={'request':request})
 		return Response(serializer.data)
 	elif(request.method == 'POST'):
-		serializer = categorySerializer(data=request.data)
+		serializer = createCategorySerializer(data=request.data)
 		if(serializer.is_valid()):
-			serializer = categorySerializer(serializer.save(), context={'request':request})
+			itemCategory = serializer.save()
+			serializer = categorySerializer(itemCategory, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

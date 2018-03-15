@@ -13,8 +13,9 @@ def orderRequest(request):
 		serializer = orderSerializer(orders, many=True, context={'request':request})
 		return Response(serializer.data)
 	elif(request.method == 'POST'):
-		serializer = orderSerializer(data=request.data)
+		serializer = createOrderSerializer(data=request.data)
 		if(serializer.is_valid()):
-			serializer = orderSerializer(serializer.save(), context={'request':request})
+			order = serializer.save()
+			serializer = orderSerializer(order, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)	

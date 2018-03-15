@@ -13,7 +13,7 @@ class Order(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = orderModel
 		fields = ('id','customer_id','item_id','delivery_id','billing_id','discount_id','TAV','price_total','date', 'status')
-		extra_kwargs = {'customer_id':{'view_name':'api:customer-detail'},'item_id':{'view_name':'api:item-detail'},'delivery_id':{'view_name':'api:delivery-detail'},'billing_id':{'view_name':'api:billing-detail'},'discount_id':{'view_name':'api:discount-detail'}}
+		extra_kwargs = {'customer_id':{'view_name':'api:customer-detail'},'item_id':{'view_name':'api:item-detail'},'delivery_id':{'view_name':'api:address-detail'},'billing_id':{'view_name':'api:address-detail'},'discount_id':{'view_name':'api:discount-detail'}}
 
 class CreateOrder(serializers.HyperlinkedModelSerializer):
 

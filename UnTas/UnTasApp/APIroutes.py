@@ -9,6 +9,7 @@ urlpatterns = [
 	url(r'^$', controller.api_root),
 #ADDRESS--------------------------------------------------------------------------------------
 	url(r'^address$',address.addressRequest, name="address"),
+	url(r'^address/(?P<pk>[0-9]+)$', address.singleAddressRequest, name="address-detail"),
 #DISCOUNT-------------------------------------------------------------------------------------
 	url(r'^discounts$', discount.discountRequest, name="discount"),
 #ITEM-----------------------------------------------------------------------------------------

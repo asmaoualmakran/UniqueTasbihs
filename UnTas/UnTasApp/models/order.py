@@ -21,7 +21,7 @@ class Order(models.Model):
 		(ENQUED, 'enqued'),
 		(AWAITING_PAYEMENT, 'awaiting payement'),
 		(AWAITING_DELIVERY, 'awaiting delivery'),
-		(COMPLETED, 'completed'),
+	#	(COMPLETED, 'completed'), at completion, the order is moved to the sales table
 		(CANCELED, 'canceled'),
 		)
 

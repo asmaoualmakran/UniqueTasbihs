@@ -3,15 +3,16 @@ from UnTasApp.models.customer import Customer as customerModel
 
 
 class Customer(serializers.HyperlinkedModelSerializer):
-	customer_address = serializers.HyperlinkedIdentityField(view_name = 'address-detail')
+	id = serializers.IntegerField(read_only=True)
+	address_id = serializers.HyperlinkedIdentityField(view_name = 'address-detail')
 
 	class Meta: 
 		model = customerModel
-		fields = ('id','customer_address','first_name','last_name','birthday','email')
-
+		fields = ('id','address_id','first_name','last_name','birthday','email')
+		extra_kwargs = {'address_id':{'view_name': 'api:address-detail'},}
 
 class CreateCustomer(serializers.HyperlinkedModelSerializer):
 
 	class Meta: 
 		model = customerModel
-		fields = ('customer_address','first_name','last_name','birthday','email')
+		fields = ('address_id','first_name','last_name','birthday','email')

@@ -9,5 +9,5 @@ class Customer(UserBase):
 	 address_id = models.ForeignKey(Address, on_delete=models.PROTECT)
 	# first_name = models.CharField(max_length=100)
 	# last_name = models.CharField(max_length=100)
-	# birthday = models.CharField(max_length=100)
+	 birthday = models.DateField()
 	# email = models.CharField(max_length=100)

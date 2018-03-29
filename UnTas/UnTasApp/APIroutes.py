@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.contrib import admin
 from UnTasApp.controllers import controller, address, discount, item, itemCategory,\
-								 order, sales, stock 
+								 order, sales, stock, customer 
 
 
 urlpatterns = [
@@ -22,4 +22,6 @@ urlpatterns = [
 	url(r'sales$', sales.salesRequest, name='sales'),
 #STOCK
 	url(r'stock$', stock.stockRequest, name='stock'),
+#CUSTOMER
+	url(r'customer$', customer.customerRequest, name='customer'),
    ]

@@ -7,11 +7,11 @@ class Customer(serializers.HyperlinkedModelSerializer):
 
 	class Meta: 
 		model = customerModel
-		fields = ('id','customer_address')
+		fields = ('id','customer_address','first_name','last_name','birthday','email')
 
 
 class CreateCustomer(serializers.HyperlinkedModelSerializer):
 
 	class Meta: 
 		model = customerModel
-		fields = ('customer_address',)
+		fields = ('customer_address','first_name','last_name','birthday','email')

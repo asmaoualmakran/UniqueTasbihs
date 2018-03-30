@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from UnTasApp.models.item import Item as itemModel
 
+#TODO: replace the PrimaryKeyRelatedField with, HyperlinkedIdentityField
 
 class Item(serializers.HyperlinkedModelSerializer):
 	id = serializers.IntegerField(read_only=True)
@@ -23,6 +24,6 @@ class CreateItem(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = itemModel
-		fields = ('category_id','discount_id','barcode','name','selling_price','buying_price','color','image','state')
+		fields = ('category','discount','barcode','name','selling_price','buying_price','color','image','state')
 
 

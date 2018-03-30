@@ -18,3 +18,25 @@ def itemCategoryRequest(request):
 			serializer = categorySerializer(itemCategory, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE'])
+def singleItemCategoryRequest(request,pk):
+	try:
+		category = categoryModel.objects.get(id=pk)
+	except categoryModel.DoesNotExist:
+		return Response(status=status.HTTP_404_NOT_FOUND)
+
+	if(request.method == 'GET'):
+		serializer = categorySerializer(category, context={'request':request})
+		return Response(serializer.data, status=status.HTTP_200_OK)
+
+	elif(request.method == 'PUT'):
+		serializer = categorySerializer(category, data=request.data, context={'request':request})
+
+		if(serializer.is_valid()):
+			serializer.save()
+			return Response(status=status.HTTP_204_NO_CONTENT)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+	else:
+		category.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)

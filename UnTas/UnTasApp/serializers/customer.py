@@ -9,7 +9,7 @@ class Customer(serializers.HyperlinkedModelSerializer):
 	class Meta: 
 		model = customerModel
 		fields = ('id','address','first_name','last_name','birthday','email')
-		extra_kwargs = {'address':{'view_name': 'address:address-detail'},}
+		extra_kwargs = {'address':{'view_name': 'api:address-detail'},}
 
 class CreateCustomer(serializers.HyperlinkedModelSerializer):
 	

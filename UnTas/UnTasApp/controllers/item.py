@@ -18,3 +18,25 @@ def itemRequest(request):
 			serializer = itemSerializer(item, context={'request':request})
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE'])
+def singleItemRequest(request,pk):
+	try:
+		item = itemModel.objects.get(id=pk)
+	except itemModel.DoesNotExist:
+		return Response(status=status.HTTP_404_NOT_FOUND)
+
+	if(request.method == 'GET'):
+		serializer = itemSerializer(item, context={'request':request})
+		return Response(serializer.data, status=status.HTTP_200_OK)
+
+	elif(request.method == 'PUT'):
+		serializer = itemSerializer(item, data=request.data, context={'request':request})
+
+		if(serializer.is_valid()):
+			serializer.save()
+			return Response(status=status.HTTP_204_NO_CONTENT)
+		return Response(serializer.erros, status=status.HTTP_400_BAD_REQUEST)
+	else:
+		item.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)

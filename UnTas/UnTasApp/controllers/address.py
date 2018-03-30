@@ -21,7 +21,7 @@ def addressRequest(request):
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-def singleAddressRequest(request, pk):
+def singleAddressRequest(request,pk):
 	try: 
 		address = addressModel.objects.get(id=pk)
 	except addressModel.DoesNotExist:
@@ -30,6 +30,7 @@ def singleAddressRequest(request, pk):
 	if(request.method == 'GET'):
 		serializer = addressSerializer(address, context={'request':request})
 		return Response(serializer.data, status=status.HTTP_200_OK)
+	
 	elif(request.method == 'PUT'):
 		serializer = addressSerializer(address, data=request.data, context={'request':request})	
 

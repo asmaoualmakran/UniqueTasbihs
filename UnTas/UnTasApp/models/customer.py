@@ -6,7 +6,7 @@ from UnTasApp.models.address import Address
 class Customer(UserBase):
 	# user = models.OneToOneField(UserBase, related_name='customers')
 	# order_id = models.ForeignKey(on_delete=PROTECT,null=True)
-	 address_id = models.ForeignKey(Address, on_delete=models.PROTECT)
+	 address = models.ForeignKey(Address, on_delete=models.PROTECT, null=True, blank=True)
 	# first_name = models.CharField(max_length=100)
 	# last_name = models.CharField(max_length=100)
 	 birthday = models.DateField()

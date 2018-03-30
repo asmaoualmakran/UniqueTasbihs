@@ -18,8 +18,8 @@ class Item(models.Model):
 		(PRODUCT_LOSS, 'product loss'),
 		)
 
-	category_id	= models.ForeignKey(ItemCategory, on_delete=models.PROTECT, null=True)
-	discount_id = models.ForeignKey(Discount, on_delete=models.PROTECT, null=True)
+	category	= models.ForeignKey(ItemCategory, on_delete=models.PROTECT, null=True)
+	discount = models.ForeignKey(Discount, on_delete=models.PROTECT, null=True)
 	barcode	= models.CharField(max_length=100, default='NO_CODE')
 	name	= models.CharField(max_length=100, default='NO_NAME')
 	selling_price = models.IntegerField(default=0)

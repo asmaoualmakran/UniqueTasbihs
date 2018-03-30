@@ -25,11 +25,11 @@ class Order(models.Model):
 		(CANCELED, 'canceled'),
 		)
 
-	customer_id = models.ForeignKey(Customer, on_delete=models.PROTECT, null=False)
-	item_id 	= models.ForeignKey(Item, on_delete=models.PROTECT, null=False)
-	delivery_id = models.ForeignKey(Address, related_name='%(class)s_delivery', on_delete=models.PROTECT, null=False)
-	billing_id = models.ForeignKey(Address, related_name='%(class)s_billing',on_delete=models.PROTECT, null=False)
-	discount_id	= models.ForeignKey(Discount, on_delete=models.PROTECT, null=False)
+	customer = models.ForeignKey(Customer, on_delete=models.PROTECT, null=False)
+	item 	= models.ForeignKey(Item, on_delete=models.PROTECT, null=False)
+	delivery = models.ForeignKey(Address, related_name='%(class)s_delivery', on_delete=models.PROTECT, null=False)
+	billing = models.ForeignKey(Address, related_name='%(class)s_billing',on_delete=models.PROTECT, null=False)
+	discount	= models.ForeignKey(Discount, on_delete=models.PROTECT, null=False)
 	TAV			= models.IntegerField(null=False)
 	price_total = models.IntegerField(null=False)
 	date = models.DateField(auto_now=True, editable=False)
